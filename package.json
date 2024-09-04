@@ -4,10 +4,18 @@
     "scripts": {
         "preinstall": "npx -y only-allow pnpm",
         "build": "pnpm -r build",
-        "dev": "pnpm --stream --parallel -r dev"
+        "dev": "pnpm --stream --parallel -r dev",
+        "lint": "eslint --quiet . --ext .ts,.js"
     },
     "devDependencies": {
         "@ccl2/rollup-config": "workspace:*",
+        "@changesets/cli": "^2.27.7",
+        "@typescript-eslint/eslint-plugin": "^8.4.0",
+        "@typescript-eslint/parser": "^8.4.0",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "prettier": "^3.3.3",
         "rollup": "^4.21.1",
         "typescript": "^5.5.4"
     }

@@ -25,10 +25,10 @@ export function binarySearch<T, E>(
     if (compartor(target, arr[arr.length - 1]) >= 0) {
         return arr.length;
     }
-    var low = 0;
-    var i = 0;
-    var count = 0;
-    var high = arr.length - 1;
+    let low = 0;
+    let i = 0;
+    let count = 0;
+    let high = arr.length - 1;
     while (low <= high) {
         i = Math.floor((high + low + 1) / 2);
         count++;

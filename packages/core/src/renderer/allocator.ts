@@ -31,7 +31,7 @@ export class SpaceAllocator implements ISpaceAllocator {
      * @param check - Checked comment
      * @returns {boolean} checked collides with exisiting
      */
-    public willCollide(existing: IComment, check: IComment): boolean {
+    public willCollide(existing: IComment, check: IComment) {
         return existing.stime + existing.ttl >= check.stime + check.ttl / 2;
     }
 
@@ -43,14 +43,10 @@ export class SpaceAllocator implements ISpaceAllocator {
      * @param pool - The pool to test in.
      * @returns {boolean} whether or not a valid path exists in the tested pool.
      */
-    public pathCheck(
-        y: number,
-        comment: IComment,
-        pool: Array<IComment>
-    ): boolean {
-        var bottom = y + comment.height;
-        var right = comment.right;
-        for (var i = 0; i < pool.length; i++) {
+    public pathCheck(y: number, comment: IComment, pool: IComment[]) {
+        const bottom = y + comment.height;
+        const right = comment.right;
+        for (let i = 0; i < pool.length; i++) {
             if (pool[i].y > bottom || pool[i].bottom < y) {
                 // This comment is not in the path bounds
                 continue;
@@ -79,7 +75,7 @@ export class SpaceAllocator implements ISpaceAllocator {
         while (this.pools.length <= cindex) {
             this.pools.push([]);
         }
-        var pool = this.pools[cindex];
+        const pool = this.pools[cindex];
         if (pool.length === 0) {
             comment.cindex = cindex;
             return 0;
@@ -88,8 +84,8 @@ export class SpaceAllocator implements ISpaceAllocator {
             comment.cindex = cindex;
             return 0;
         }
-        var y: number = 0;
-        for (var k = 0; k < pool.length; k++) {
+        let y = 0;
+        for (let k = 0; k < pool.length; k++) {
             y = pool[k].bottom + this.avoid;
             if (y + comment.height > this.height) {
                 break;
@@ -110,7 +106,7 @@ export class SpaceAllocator implements ISpaceAllocator {
      * recorded, check the cindex value.
      * @param comment
      */
-    public add(comment: IComment): void {
+    public add(comment: IComment) {
         if (comment.height > this.height) {
             comment.cindex = -2;
             comment.y = 0;
@@ -137,15 +133,17 @@ export class SpaceAllocator implements ISpaceAllocator {
      * if the comment is not found
      * @param comment
      */
-    public remove(comment: IComment): void {
+    public remove(comment: IComment) {
         if (comment.cindex < 0) {
             return;
         }
         if (comment.cindex >= this.pools.length) {
             throw new Error('cindex out of bounds');
         }
-        var index = this.pools[comment.cindex].indexOf(comment);
-        if (index < 0) return;
+        const index = this.pools[comment.cindex].indexOf(comment);
+        if (index < 0) {
+            return;
+        }
         this.pools[comment.cindex].splice(index, 1);
     }
 
@@ -157,25 +155,25 @@ export class SpaceAllocator implements ISpaceAllocator {
      * @param width
      * @param height
      */
-    public setBounds(width: number, height: number): void {
+    public setBounds(width: number, height: number) {
         this.width = width;
         this.height = height;
     }
 }
 
 export class AnchorSpaceAllocator extends SpaceAllocator {
-    public add(comment: IComment): void {
+    public add(comment: IComment) {
         super.add(comment);
         comment.x = (this.width - comment.width) / 2;
     }
 
-    public willCollide(a: IComment, b: IComment): boolean {
+    public willCollide(_a: IComment, _b: IComment) {
         return true;
     }
 
-    public pathCheck(y: number, comment: IComment, pool: IComment[]): boolean {
-        var bottom = y + comment.height;
-        for (var i = 0; i < pool.length; i++) {
+    public pathCheck(y: number, comment: IComment, pool: IComment[]) {
+        const bottom = y + comment.height;
+        for (let i = 0; i < pool.length; i++) {
             if (pool[i].y > bottom || pool[i].bottom < y) {
                 continue;
             } else {

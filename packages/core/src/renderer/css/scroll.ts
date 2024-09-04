@@ -13,7 +13,7 @@ export class CssScrollComment extends ScrollComment {
     set x(x: number) {
         if (this._x !== null && typeof this._x === 'number') {
             // This is run when starting
-            var dx: number = x - this._x;
+            const dx: number = x - this._x;
             this._x = x;
 
             this.element.style.transform =
@@ -71,7 +71,8 @@ export class CssScrollComment extends ScrollComment {
         // Set to null to force writing an absolute x position
         this._x = null;
         // Write down the current expected x as absolute
-        this.x = this.x;
+        // TODO ?
+        // this.x = this.x;
         // Make the CSS dirty so that next update will start the movement
         this.dirtyCSS = true;
     }

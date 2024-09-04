@@ -18,18 +18,18 @@ export class Matrix3D {
     };
 
     static createRotationMatrix = (
-        xRot: number,
+        _xRot: number,
         yRot: number,
         zRot: number
     ) => {
         // Courtesy of @StarBrilliant, re-adapted for general case
         // TODO: add support for xRot
-        var yr = yRot * deg2rad;
-        var zr = zRot * deg2rad;
-        var matrix = [
-            [cos(yr) * cos(zr), cos(yr) * sin(zr), sin(yr), 0],
-            [-sin(zr), cos(zr), 0, 0],
-            [-sin(yr) * cos(zr), -sin(yr) * sin(zr), cos(yr), 0],
+        const yR = yRot * deg2rad;
+        const zR = zRot * deg2rad;
+        const matrix = [
+            [cos(yR) * cos(zR), cos(yR) * sin(zR), sin(yR), 0],
+            [-sin(zR), cos(zR), 0, 0],
+            [-sin(yR) * cos(zR), -sin(yR) * sin(zR), cos(yR), 0],
             [0, 0, 0, 1],
         ]
             .flat()
@@ -109,12 +109,12 @@ export class Matrix3D {
      * @returns {Matrix3D} dot product
      */
     public dot(matrix: Matrix3D): Matrix3D {
-        var a = this.arr.slice();
-        var b = matrix.arr.slice();
-        var res: Tuple16 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        for (var i = 0; i < 4; i++) {
-            for (var j = 0; j < 4; j++) {
-                for (var k = 0; k < 4; k++) {
+        const a = this.arr.slice();
+        const b = matrix.arr.slice();
+        const res: Tuple16 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                for (let k = 0; k < 4; k++) {
                     res[i * 4 + j] += a[i * 4 + k] * b[k * 4 + j];
                 }
             }
@@ -128,7 +128,7 @@ export class Matrix3D {
      * @returns {boolean} indicator of whether two matrices are the same
      */
     public equals(matrix: Matrix3D): boolean {
-        for (var i = 0; i < 16; i++) {
+        for (let i = 0; i < 16; i++) {
             if (this.arr[i] !== matrix.arr[i]) {
                 return false;
             }
@@ -141,8 +141,8 @@ export class Matrix3D {
      * @returns {string} representation of matrix
      */
     public toCss(): string {
-        var matrix = this.arr.slice();
-        for (var i = 0; i < matrix.length; i++) {
+        const matrix = this.arr.slice();
+        for (let i = 0; i < matrix.length; i++) {
             if (Math.abs(matrix[i]) < 0.000001) {
                 matrix[i] = 0;
             }

@@ -113,7 +113,7 @@ export class RuleBasedFilter implements Delegate<ICommentFilter> {
     }
 
     removeRule(rule: Rule) {
-        var index = this.rules.indexOf(rule);
+        const index = this.rules.indexOf(rule);
         if (index >= 0) {
             this.rules.splice(index, 1);
             return true;
@@ -125,10 +125,12 @@ export class RuleBasedFilter implements Delegate<ICommentFilter> {
     resolve() {
         return (comment: CommentData) => {
             for (const rule of this.rules) {
-                var matched = false;
+                let matched = false;
                 try {
-                    var matched = match(rule, comment);
-                } catch (_) {}
+                    matched = match(rule, comment);
+                } catch (_) {
+                    console.warn('[RuleBasedFilter]'); // TODO
+                }
                 const r = rule.mode === FilterMode.ACCEPT ? matched : !matched;
                 if (!r) {
                     return false;

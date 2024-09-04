@@ -91,9 +91,9 @@ export class CommentManager implements ICommentManager {
         if (this.timer > 0) {
             return;
         }
-        var lastTPos = new Date().getTime();
+        let lastTPos = new Date().getTime();
         this.timer = window.setInterval(() => {
-            var elapsed = new Date().getTime() - lastTPos;
+            const elapsed = new Date().getTime() - lastTPos;
             lastTPos = new Date().getTime();
             this.onTimerEvent(elapsed, this);
         }, 10);
@@ -209,9 +209,8 @@ export class CommentManager implements ICommentManager {
     }
 
     onTimerEvent(time: number, manager: CommentManager) {
-        for (var i = 0; i < manager.runline.length; i++) {
-            var comment = manager.runline[i];
-            comment.time(time);
+        for (let i = 0; i < manager.runline.length; i++) {
+            manager.runline[i].time(time);
         }
     }
 
@@ -229,7 +228,7 @@ export class CommentManager implements ICommentManager {
         } else {
             this.lastTime = time;
         }
-        var batch = [];
+        const batch = [];
         for (; this.position < this.timeline.length; this.position++) {
             if (this.timeline[this.position]['stime'] <= time) {
                 if (
@@ -284,7 +283,7 @@ export class CommentManager implements ICommentManager {
     finish(comment: IComment) {
         this.dispatchEvent('exitComment', comment);
         this.stage.removeChild(comment.element);
-        var index = this.runline.indexOf(comment);
+        const index = this.runline.indexOf(comment);
         if (index >= 0) {
             this.runline.splice(index, 1);
         }
@@ -307,7 +306,7 @@ export class CommentManager implements ICommentManager {
     dispatchEvent(event: string, data?: any) {
         if (typeof this.listeners[event] !== 'undefined') {
             console.log('[CCL2][Core] dispatch event "%s": %o', event, data);
-            for (var i = 0; i < this.listeners[event].length; i++) {
+            for (let i = 0; i < this.listeners[event].length; i++) {
                 try {
                     this.listeners[event][i](data);
                 } catch (e) {

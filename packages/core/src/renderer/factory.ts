@@ -15,7 +15,7 @@ function initCoreComment(
     manager: ICommentManager,
     data: CommentData
 ): IComment {
-    var cmt = new CoreComment(manager, data);
+    const cmt = new CoreComment(manager, data);
     cmt.init();
     cmt.transform = Matrix3D.createRotationMatrix(
         0,
@@ -27,7 +27,7 @@ function initCoreComment(
 }
 
 function initAnchored(manager: ICommentManager, data: CommentData): IComment {
-    var cmt = new CoreComment(manager, data);
+    const cmt = new CoreComment(manager, data);
     switch (cmt.mode) {
         case CommentType.BottomStatic: {
             cmt.align = 2;
@@ -46,7 +46,7 @@ function initAnchored(manager: ICommentManager, data: CommentData): IComment {
 }
 
 function initScrolling(manager: ICommentManager, data: CommentData): IComment {
-    var cmt = new ScrollComment(manager, data);
+    const cmt = new ScrollComment(manager, data);
     switch (cmt.mode) {
         case CommentType.TopScrolling: {
             cmt.align = 0;
@@ -73,7 +73,7 @@ function initCssScrolling(
     manager: ICommentManager,
     data: CommentData
 ): IComment {
-    var cmt = new CssScrollComment(manager, data);
+    const cmt = new CssScrollComment(manager, data);
     switch (cmt.mode) {
         case CommentType.TopScrolling: {
             cmt.align = 0;
@@ -100,7 +100,7 @@ export class CommentFactory implements ICommentFactory {
     private readonly delegate: { [mode in CommentType]?: Factory } = {};
 
     static defaultClassic(): ICommentFactory {
-        var factory = new CommentFactory();
+        const factory = new CommentFactory();
         factory.bind(CommentType.TopScrolling, initScrolling);
         factory.bind(CommentType.BottomScrolling, initScrolling);
         factory.bind(CommentType.TopReverse, initScrolling);
@@ -112,7 +112,7 @@ export class CommentFactory implements ICommentFactory {
     }
 
     static defaultCssRender(): ICommentFactory {
-        var factory = new CommentFactory();
+        const factory = new CommentFactory();
         factory.bind(CommentType.TopScrolling, initCssScrolling);
         factory.bind(CommentType.BottomScrolling, initCssScrolling);
         factory.bind(CommentType.TopReverse, initCssScrolling);

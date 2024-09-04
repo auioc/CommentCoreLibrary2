@@ -88,12 +88,12 @@ export class CoreComment implements IComment {
             this._motionStart = [];
             this._motionEnd = [];
             this.motion = init['motion'];
-            var head = 0;
-            for (var i = 0; i < init['motion'].length; i++) {
+            let head = 0;
+            for (let i = 0; i < init['motion'].length; i++) {
                 this._motionStart.push(head);
-                var maxDur = 0;
-                for (var k in init['motion'][i]) {
-                    var m = <IMotion>init['motion'][i][k];
+                let maxDur = 0;
+                for (const k in init['motion'][i]) {
+                    const m = <IMotion>init['motion'][i][k];
                     maxDur = Math.max(m.dur + m.delay, maxDur);
                     if (m.easing === null || m.easing === undefined) {
                         init['motion'][i][k]['easing'] = linearEasing;
@@ -158,8 +158,8 @@ export class CoreComment implements IComment {
             this.element.classList.toggle(className, toggle);
         } else {
             // Fallback to traditional method
-            var classList: string[] = this.element.className.split(' ');
-            var index = classList.indexOf(className);
+            const classList: string[] = this.element.className.split(' ');
+            const index = classList.indexOf(className);
             if (index >= 0 && !toggle) {
                 classList.splice(index, 1);
                 this.element.className = classList.join(' ');
@@ -264,13 +264,13 @@ export class CoreComment implements IComment {
     }
 
     get bottom(): number {
-        var sameDirection =
+        const sameDirection =
             Math.floor(this.axis / 2) === Math.floor(this.align / 2);
         return this.y + (sameDirection ? this.height : 0);
     }
 
     get right(): number {
-        var sameDirection = this.axis % 2 === this.align % 2;
+        const sameDirection = this.axis % 2 === this.align % 2;
         return this.x + (sameDirection ? this.width : 0);
     }
 
@@ -361,7 +361,7 @@ export class CoreComment implements IComment {
 
     set color(c: number) {
         this._color = c;
-        var color: string = c.toString(16);
+        let color: string = c.toString(16);
         color =
             color.length >= 6
                 ? color
@@ -453,9 +453,9 @@ export class CoreComment implements IComment {
      * @private
      */
     private _execMotion(currentMotion: MotionRecord, time: number): void {
-        for (var prop in currentMotion) {
+        for (const prop in currentMotion) {
             if (currentMotion.hasOwnProperty(prop)) {
-                var m = currentMotion[prop];
+                const m = currentMotion[prop];
                 // TODO
                 // @ts-expect-error
                 this[prop] = m.easing(
@@ -483,8 +483,9 @@ export class CoreComment implements IComment {
         if (this.motion.length === 0) {
             return;
         }
-        var ttl: number = Math.max(this.ttl, 0);
-        var time: number = this.dur - ttl - this._motionStart[this._curMotion];
+        const ttl: number = Math.max(this.ttl, 0);
+        const time: number =
+            this.dur - ttl - this._motionStart[this._curMotion];
         this._execMotion(this.motion[this._curMotion], time);
         if (this.dur - ttl > this._motionEnd[this._curMotion]) {
             this._curMotion++;

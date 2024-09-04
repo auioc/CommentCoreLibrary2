@@ -24,6 +24,8 @@ function formatmode7(text: string) {
 
 // Try to escape unsafe HTML code. DO NOT trust that this handles all cases
 // Please do not allow insecure DOM parsing unless you can trust your input source.
+// TODO
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function escapeUnsafe(text: string) {
     text = text.replace(new RegExp('</([^d])', 'g'), '</disabled $1');
     text = text.replace(new RegExp('</(S{2,})', 'g'), '</disabled $1');
@@ -49,13 +51,16 @@ export class BilibiliXmlParser {
     }
 
     parseOne(el: Element) {
+        const params: string[] = [];
         try {
-            var params = el.getAttribute('p').split(',');
-        } catch (e) {
+            el.getAttribute('p')
+                .split(',')
+                .forEach((v) => params.push(v));
+        } catch (_) {
             return null; // Probably not XML
         }
 
-        var text = el.textContent;
+        let text = el.textContent;
 
         const comment: CommentData = {
             text: '',
@@ -82,7 +87,7 @@ export class BilibiliXmlParser {
                     if (this.attemptFix) {
                         text = format(formatmode7(text));
                     }
-                    var extendedParams = JSON.parse(text);
+                    const extendedParams = JSON.parse(text);
                     comment.shadow = true;
                     comment.x = parseFloat(extendedParams[0]);
                     comment.y = parseFloat(extendedParams[1]);
@@ -106,8 +111,8 @@ export class BilibiliXmlParser {
                     comment.movable = false;
                     if (extendedParams.length >= 11) {
                         comment.movable = true;
-                        var singleStepDur = 500;
-                        var motion = {
+                        let singleStepDur = 500;
+                        let motion = {
                             x: {
                                 from: comment.x,
                                 to: parseFloat(extendedParams[7]),
@@ -147,18 +152,19 @@ export class BilibiliXmlParser {
                                     }
                                     comment.position = 'absolute';
                                 }
-                                var path = extendedParams[14];
-                                var lastPoint = {
+                                const path = extendedParams[14];
+                                const lastPoint = {
                                     x: motion.x.from,
                                     y: motion.y.from,
                                 };
-                                var pathMotion = [];
-                                var regex = new RegExp(
+                                const pathMotion = [];
+                                const regex = new RegExp(
                                     '([a-zA-Z])\\s*(\\d+)[, ](\\d+)',
                                     'g'
                                 );
-                                var counts = path.split(/[a-zA-Z]/).length - 1;
-                                var m = regex.exec(path);
+                                const counts =
+                                    path.split(/[a-zA-Z]/).length - 1;
+                                let m = regex.exec(path);
                                 while (m !== null) {
                                     switch (m[1]) {
                                         case 'M':
@@ -218,10 +224,10 @@ export class BilibiliXmlParser {
                     if (extendedParams[3] < 12) {
                         comment.dur = extendedParams[3] * 1000;
                     }
-                    var tmp = extendedParams[2].split('-');
+                    const tmp = extendedParams[2].split('-');
                     if (tmp != null && tmp.length > 1) {
-                        var alphaFrom = parseFloat(tmp[0]);
-                        var alphaTo = parseFloat(tmp[1]);
+                        const alphaFrom = parseFloat(tmp[0]);
+                        const alphaTo = parseFloat(tmp[1]);
                         comment.opacity = alphaFrom;
                         if (alphaFrom !== alphaTo) {
                             comment.alphaMotion = {
@@ -230,7 +236,7 @@ export class BilibiliXmlParser {
                             };
                         }
                     }
-                } catch (e) {
+                } catch (_) {
                     if (this.logBadComments) {
                         console.warn(
                             'Error occurred in JSON parsing. Could not parse comment.'
@@ -261,13 +267,13 @@ export class BilibiliXmlParser {
         let elements: HTMLCollectionOf<Element>;
         try {
             elements = xml.getElementsByTagName('d');
-        } catch (e) {
+        } catch (_) {
             // TODO: handle XMLDOC errors.
             return null; // Bail, I can't handle
         }
-        var comments = [];
-        for (var i = 0; i < elements.length; i++) {
-            var comment = this.parseOne(elements[i]);
+        const comments = [];
+        for (let i = 0; i < elements.length; i++) {
+            const comment = this.parseOne(elements[i]);
             if (comment !== null) {
                 comments.push(comment);
             }
