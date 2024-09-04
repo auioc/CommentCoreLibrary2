@@ -6,7 +6,7 @@
         "clean:dist": "rimraf --verbose --glob -- packages/*/dist",
         "build": "pnpm clean:dist & pnpm -r build",
         "build:dev": "pnpm clean:dist & pnpm -r build:dev",
-        "watch": "pnpm clean:dist & pnpm --stream --parallel -r watch",
+        "watch": "pnpm build:dev & pnpm --stream --parallel -r watch",
         "eslint:check": "eslint --quiet . --ext .ts,.js"
     },
     "devDependencies": {
