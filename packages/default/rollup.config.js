@@ -8,6 +8,7 @@ export default createRollupConfig({
             file: 'dist/CommentCoreLibrary2.js',
             format: 'iife',
             name: 'CommentCoreLibrary',
+            footer: 'window.CCL = window.CommentCoreLibrary;',
             sourcemap: dev,
         },
     ], //
