@@ -1,0 +1,22 @@
+{
+    "name": "@ccl2/parsers",
+    "version": "2.0.0",
+    "description": "",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "dependencies": {
+        "@ccl2/core": "workspace:*"
+    }
+}

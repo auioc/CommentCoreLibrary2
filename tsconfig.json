@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "removeComments": false,
+        "strictFunctionTypes": true,
+        "lib": ["ESNext", "DOM"],
+        "sourceMap": true,
+        "declaration": true,
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}

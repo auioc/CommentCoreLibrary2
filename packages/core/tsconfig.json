@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "module": "NodeNext",
+        "baseUrl": "src",
+        "declarationDir": "dist/dts",
+        "outDir": "dist",
+        "paths": {
+            "@api/*": ["api/*"],
+            "@utils/*": ["utils/*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["dist", "node_modules"]
+}

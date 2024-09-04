@@ -1,0 +1,29 @@
+{
+    "name": "comment-core-library-2",
+    "version": "2.0.0",
+    "description": "CommentCoreLibrary 2",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "onchange -i -d 500 --no-exclude \"node_modules/@ccl2/*/dist/index.js\" -- rollup -c"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "dependencies": {
+        "@ccl2/core": "workspace:*",
+        "@ccl2/filters": "workspace:*",
+        "@ccl2/parsers": "workspace:*"
+    },
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "onchange": "^7.1.0",
+        "rollup-plugin-sourcemaps2": "^0.4.1"
+    }
+}

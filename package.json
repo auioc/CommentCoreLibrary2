@@ -1,0 +1,14 @@
+{
+    "name": "comment-core-library",
+    "private": true,
+    "scripts": {
+        "preinstall": "npx -y only-allow pnpm",
+        "build": "pnpm -r build",
+        "dev": "pnpm --stream --parallel -r dev"
+    },
+    "devDependencies": {
+        "@ccl2/rollup-config": "workspace:*",
+        "rollup": "^4.21.1",
+        "typescript": "^5.5.4"
+    }
+}
