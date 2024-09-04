@@ -1,5 +1,8 @@
+/* eslint-disable */
 import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
+
+export const dev = process.env.BUILD === 'development';
 
 export function createRollupConfig({
     tsconfig = {},
@@ -14,7 +17,7 @@ export function createRollupConfig({
                 {
                     file: 'dist/index.js',
                     format: 'es',
-                    sourcemap: true,
+                    sourcemap: dev,
                 },
                 ...outputs,
             ],

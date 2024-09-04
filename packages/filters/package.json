@@ -11,7 +11,8 @@
     ],
     "scripts": {
         "build": "rollup -c",
-        "dev": "rollup -c --watch"
+        "build:dev": "rollup -c --environment BUILD:development",
+        "watch": "rollup -c --environment BUILD:development --watch"
     },
     "author": "",
     "license": "MIT",

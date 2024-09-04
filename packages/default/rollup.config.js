@@ -1,4 +1,4 @@
-import { createRollupConfig } from '@ccl2/rollup-config';
+import { dev, createRollupConfig } from '@ccl2/rollup-config';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import sourcemaps from 'rollup-plugin-sourcemaps2';
 
@@ -8,7 +8,7 @@ export default createRollupConfig({
             file: 'dist/CommentCoreLibrary2.js',
             format: 'iife',
             name: 'CommentCoreLibrary',
-            sourcemap: true,
+            sourcemap: dev,
         },
     ], //
     plugins: [nodeResolve(), sourcemaps()],

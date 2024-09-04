@@ -3,9 +3,11 @@
     "private": true,
     "scripts": {
         "preinstall": "npx -y only-allow pnpm",
-        "build": "pnpm -r build",
-        "dev": "pnpm --stream --parallel -r dev",
-        "lint": "eslint --quiet . --ext .ts,.js"
+        "clean:dist": "rimraf --verbose --glob -- packages/*/dist",
+        "build": "pnpm clean:dist & pnpm -r build",
+        "build:dev": "pnpm clean:dist & pnpm -r build:dev",
+        "watch": "pnpm clean:dist & pnpm --stream --parallel -r watch",
+        "eslint:check": "eslint --quiet . --ext .ts,.js"
     },
     "devDependencies": {
         "@ccl2/rollup-config": "workspace:*",
@@ -16,6 +18,7 @@
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
         "prettier": "^3.3.3",
+        "rimraf": "^6.0.1",
         "rollup": "^4.21.1",
         "typescript": "^5.5.4"
     }

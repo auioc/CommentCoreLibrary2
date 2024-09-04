@@ -7,7 +7,8 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "rollup -c",
-        "dev": "onchange -i -d 500 --no-exclude \"node_modules/@ccl2/*/dist/index.js\" -- rollup -c"
+        "build:dev": "rollup -c --environment BUILD:development",
+        "watch": "onchange -i -d 500 --no-exclude \"node_modules/@ccl2/*/dist/index.js\" -- rollup -c --environment BUILD:development"
     },
     "keywords": [],
     "author": "",
