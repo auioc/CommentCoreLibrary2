@@ -40,7 +40,8 @@
 
 #### `comment-core-library-2`
 
-包含以下所有模块，且支持直接在浏览器中使用。
+- 包含模块 `@ccl2/core`、`@ccl2/parsers`、`@ccl2/filters`
+- `CommentCoreLibrary2.js` 支持直接在浏览器中使用
 
 #### `@ccl2/core`
 

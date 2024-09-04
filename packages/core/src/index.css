@@ -1,0 +1,51 @@
+.ccl-stage {
+    border: 0;
+    bottom: 0;
+    display: block;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    user-select: none;
+    z-index: 9999;
+}
+
+.ccl-stage .cmt {
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 0;
+    line-height: 100%;
+    margin: 0;
+    padding: 3px 0 0 0;
+    position: absolute;
+    text-decoration: none;
+    text-shadow:
+        -1px 0 black,
+        0 1px black,
+        1px 0 black,
+        0 -1px black;
+    text-size-adjust: none;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform-origin: 0% 0%;
+    white-space: pre;
+    word-break: keep-all;
+}
+
+.ccl-stage .cmt.no-shadow {
+    text-shadow: none;
+}
+
+.ccl-stage .cmt.reverse-shadow {
+    text-shadow:
+        -1px 0 white,
+        0 1px white,
+        1px 0 white,
+        0 -1px white;
+}
+
+.ccl-stage.cmt.css-optimize {
+    will-change: transform;
+}

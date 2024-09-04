@@ -9,3 +9,4 @@ dist
 rollup.config-*.cjs
 
 demo
+demo-*

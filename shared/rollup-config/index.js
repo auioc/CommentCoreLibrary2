@@ -36,6 +36,7 @@ export function createRollupConfig({
                     format: 'es',
                 },
             ],
+            external: [/\.css$/],
             plugins: [
                 dts({
                     compilerOptions: {

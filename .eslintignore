@@ -1,5 +1,6 @@
 dist
 demo
+demo-*
 node_modules
 package.json
 .eslintrc.*

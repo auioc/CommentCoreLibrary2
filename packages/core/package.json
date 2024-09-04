@@ -15,5 +15,9 @@
         "watch": "rollup -c --environment BUILD:development --watch"
     },
     "author": "",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "rollup-plugin-postcss": "^4.0.2",
+        "typescript-plugin-css-modules": "^5.1.0"
+    }
 }
