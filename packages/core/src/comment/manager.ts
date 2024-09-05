@@ -183,11 +183,11 @@ export class CommentManager implements ICommentManager {
     }
 
     bindToVideo(video: HTMLVideoElement) {
-        video.onplay = () => this.start();
-        video.onpause = () => this.stop();
-        video.ontimeupdate = () => {
+        video.addEventListener('play', () => this.start());
+        video.addEventListener('pause', () => this.stop());
+        video.addEventListener('timeupdate', () => {
             this.time(Math.floor(1000 * video.currentTime));
-        };
+        });
 
         const resize = () => {
             const d = calcVideoRenderedSize(video);
