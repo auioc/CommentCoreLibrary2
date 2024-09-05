@@ -30,7 +30,8 @@
   - [ ] AcFun JSON
 - [ ] 代码弹幕
 - [ ] 文档
-- [ ] 示例
+- [x] 演示
+  - [ ] 完整测试演示（[参考原项目](http://jabbany.github.io/CommentCoreLibrary/demo)）
 
 ## 使用
 

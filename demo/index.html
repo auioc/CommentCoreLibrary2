@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CommentCoreLibrary2 Demo</title>
+        <link rel="stylesheet" href="demo.css" />
+    </head>
+    <body>
+        <div id="controls">
+            <div>播放器控制</div>
+            <div id="video-contorls">
+                <button id="ctrl-rest-player">重置</button>
+                <button id="ctrl-player-size" title="点击重置"></button>
+                <button id="ctrl-play">播放</button>
+                <button id="ctrl-pause">暂停</button>
+                <input type="range" id="ctrl-progress" value="0" max="1" step="0.001" />
+                <span id="time-current"> --:-- </span>
+                <span>&nbsp;/&nbsp;</span>
+                <span id="time-duration"> --:-- </span>
+            </div>
+            <div>弹幕控制</div>
+            <div id="danmaku-controls">
+                <button id="ctrl-clear-danmaku">清除</button>
+            </div>
+            <div>加载测试弹幕</div>
+            <div id="danmaku-tests">
+                <button data-danmaku="test.xml">Test 1</button>
+                <button data-danmaku="test2.xml">Test 2</button>
+                <button data-danmaku="rokubunnoichi.xml">Test 3</button>
+                <button data-danmaku="mikunoshoushitsu.xml">Test 4</button>
+                <button data-danmaku="unowen.xml">Test 5</button>
+                <button data-danmaku="comment.xml">Test 6</button>
+                <button data-danmaku="extended.xml">Test 7</button>
+                <button data-danmaku="boss.xml">Test 8</button>
+                <button data-danmaku="utsukushiki_mono.xml">Test 9</button>
+            </div>
+        </div>
+
+        <div id="player">
+            <video id="video" src="assets/1.mp4"></video>
+            <div id="danmaku-stage" class="ccl-stage"></div>
+        </div>
+        <script src="../packages/default/dist/CommentCoreLibrary2.js"></script>
+        <script src="demo.js"></script>
+    </body>
+</html>
