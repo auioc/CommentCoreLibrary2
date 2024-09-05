@@ -24,7 +24,6 @@ export function createRollupConfig({
             external,
             plugins: [typescript(), ...plugins],
             watch: {
-                include: 'src/**',
                 buildDelay: 500,
             },
         },
