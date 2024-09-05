@@ -1,6 +1,6 @@
 {
     "name": "@ccl2/parsers",
-    "version": "2.0.0",
+    "version": "0.0.1",
     "description": "",
     "type": "module",
     "main": "dist/index.js",
@@ -17,6 +17,9 @@
         "dist",
         "src"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@ccl2/core": "workspace:*"
     }
