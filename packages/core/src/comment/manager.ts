@@ -117,7 +117,6 @@ export class CommentManager implements ICommentManager {
         this.timeline = comments;
         this.timeline.sort(commentComparator);
         this.dispatchEvent('load');
-        console.debug('[CCL2][Core] loaded %d danmaku', comments.length);
     }
 
     seek(time: number) {
@@ -192,20 +191,15 @@ export class CommentManager implements ICommentManager {
         const resize = () => {
             const d = calcVideoRenderedSize(video);
             if (d.filter((v) => !v).length > 0) {
-                console.warn(
-                    `[CCL2][Core] invalid video size [${d}], waiting for retrying`
-                );
                 setTimeout(() => resize(), 200);
             } else {
                 this.stage.style.width = d[0] + 'px';
                 this.stage.style.height = d[1] + 'px';
                 this.stage.style.margin = 'auto';
-                console.debug(`[CCL2][Core] video resize [${d}]`);
                 this.setBounds();
             }
         };
         new ResizeObserver(() => resize()).observe(video);
-        console.debug('[CCL2][Core] bind to %o', { video });
     }
 
     onTimerEvent(time: number, manager: CommentManager) {

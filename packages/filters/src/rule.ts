@@ -129,7 +129,7 @@ export class RuleBasedFilter implements Delegate<ICommentFilter> {
                 try {
                     matched = match(rule, comment);
                 } catch (_) {
-                    console.warn('[RuleBasedFilter]'); // TODO
+                    // TODO
                 }
                 const r = rule.mode === FilterMode.ACCEPT ? matched : !matched;
                 if (!r) {

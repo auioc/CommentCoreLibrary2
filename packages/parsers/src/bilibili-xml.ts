@@ -278,9 +278,6 @@ export class BilibiliXmlParser {
                 comments.push(comment);
             }
         }
-
-        console.debug('[CCL2][BilibiliXML] loaded %d danmaku', comments.length);
-
         return comments;
     }
 }
