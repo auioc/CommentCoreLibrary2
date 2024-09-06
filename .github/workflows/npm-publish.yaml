@@ -7,7 +7,7 @@ on:
 
 jobs:
     changesets:
-        if: ${{ github.repository_owner == 'auioc' && startsWith(github.event.head_commit.message, 'release') }}
+        if: ${{ github.repository_owner == 'auioc'}}
         runs-on: ubuntu-latest
         permissions:
             contents: write
