@@ -9,7 +9,9 @@
         "watch": "pnpm --stream --parallel -r watch",
         "eslint:check": "eslint --quiet . --ext .ts,.js",
         "changeset": "changeset",
-        "version": "changeset version && pnpm install"
+        "version": "changeset version && pnpm install",
+        "prepublish": "rimraf --verbose --glob -- packages/*/dist/dts",
+        "publish": "pnpm prepublish && changeset publish"
     },
     "devDependencies": {
         "@ccl2/rollup-config": "workspace:*",
