@@ -1,6 +1,6 @@
 {
     "name": "comment-core-library-2",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "CommentCoreLibrary 2",
     "type": "module",
     "main": "dist/index.js",
