@@ -6,7 +6,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "rollup -c & pnpm minify",
+        "build": "rollup -c && pnpm minify",
         "minify": "terser dist/CommentCoreLibrary2.js --config-file terser.config.json -o dist/CommentCoreLibrary2.min.js",
         "build:dev": "rollup -c --environment BUILD:development",
         "watch": "rollup -c --environment BUILD:development --watch"
