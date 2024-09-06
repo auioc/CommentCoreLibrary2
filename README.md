@@ -18,8 +18,6 @@
 
 ## 进度
 
-**目前迁移重构正在进行中，项目暂时没有在 npm 上发布。**
-
 - [x] 基础核心功能（`CommentManager`）
 - [x] 弹幕过滤
 - [x] 弹幕预处理
@@ -41,20 +39,28 @@
 
 #### `comment-core-library-2`
 
+[![NPM Version](https://img.shields.io/npm/v/comment-core-library-2?style=flat-square)](https://www.npmjs.com/package/comment-core-library-2)
+
 - 包含模块 `@ccl2/core`、`@ccl2/parsers`、`@ccl2/filters`
 - `CommentCoreLibrary2.js` 支持直接在浏览器中使用
 
 #### `@ccl2/core`
 
+[![NPM Version](https://img.shields.io/npm/v/@ccl2/core?style=flat-square)](https://www.npmjs.com/package/@ccl2/core)
+
 核心模块（`CommentManager`）与各种 API。
 
 #### `@ccl2/parsers`
+
+[![NPM Version](https://img.shields.io/npm/v/@ccl2/parsers?style=flat-square)](https://www.npmjs.com/package/@parsers/core)
 
 弹幕解析器：
 
 - `BilibiliXmlParser`：哔哩哔哩 XML 格式弹幕
 
 #### `@ccl2/filters`
+
+[![NPM Version](https://img.shields.io/npm/v/@ccl2/filters?style=flat-square)](https://www.npmjs.com/package/@ccl2/filters)
 
 多个内置的过滤器：
 
