@@ -7,7 +7,9 @@
         "build": "pnpm clean:dist & pnpm -r build",
         "build:dev": "pnpm clean:dist & pnpm -r build:dev",
         "watch": "pnpm --stream --parallel -r watch",
-        "eslint:check": "eslint --quiet . --ext .ts,.js"
+        "eslint:check": "eslint --quiet . --ext .ts,.js",
+        "changeset": "changeset",
+        "version": "changeset version && pnpm install"
     },
     "devDependencies": {
         "@ccl2/rollup-config": "workspace:*",
