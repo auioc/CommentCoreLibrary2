@@ -17,7 +17,21 @@
         "build:dev": "rollup -c --environment BUILD:development",
         "watch": "rollup -c --environment BUILD:development --watch"
     },
-    "author": "",
+    "author": {
+        "name": "AUIOC",
+        "url": "https://www.auioc.org"
+    },
+    "contributors": [
+        {
+            "name": "LainIO24",
+            "email": "lainio24@outlook.com",
+            "url": "https://github.com/lainio24"
+        },
+        {
+            "name": "WakelessSloth56",
+            "url": "https://github.com/WakelessSloth56"
+        }
+    ],
     "license": "MIT",
     "devDependencies": {
         "rollup-plugin-postcss": "^4.0.2",
