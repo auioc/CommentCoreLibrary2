@@ -1,5 +1,11 @@
 # comment-core-library-2
 
+## 0.1.2
+
+### Patch Changes
+
+-   4270f07: update build scripts
+
 ## 0.1.1
 
 ### Patch Changes
