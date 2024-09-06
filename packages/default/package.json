@@ -6,7 +6,8 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "rollup -c",
+        "build": "rollup -c & pnpm minify",
+        "minify": "terser dist/CommentCoreLibrary2.js --config-file terser.config.json -o dist/CommentCoreLibrary2.min.js",
         "build:dev": "rollup -c --environment BUILD:development",
         "watch": "rollup -c --environment BUILD:development --watch"
     },
@@ -37,11 +38,13 @@
     "dependencies": {
         "@ccl2/core": "workspace:*",
         "@ccl2/filters": "workspace:*",
-        "@ccl2/parsers": "workspace:*",
-        "fast-glob": "^3.3.2"
+        "@ccl2/parsers": "workspace:*"
     },
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^15.2.3",
-        "rollup-plugin-sourcemaps2": "^0.4.1"
+        "fast-glob": "^3.3.2",
+        "rollup-plugin-license": "^3.5.2",
+        "rollup-plugin-sourcemaps2": "^0.4.1",
+        "terser": "^5.31.6"
     }
 }

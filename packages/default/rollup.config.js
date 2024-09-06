@@ -12,7 +12,7 @@ export default createRollupConfig({
             footer: 'window.CCL = window.CommentCoreLibrary;',
             sourcemap: dev,
         },
-    ], //
+    ],
     plugins: [
         {
             name: 'watch-packages',
