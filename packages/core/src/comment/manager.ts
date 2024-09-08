@@ -1,45 +1,13 @@
 import { CommentData, CommentType, IComment } from '@api/comment.js';
 import { ICommentFilter } from '@api/filter.js';
+import { ICommentManager } from '@api/manager.js';
 import { ICommentPreprocessor } from '@api/preprocessor.js';
+import { ISpaceAllocator } from '@api/renderer.js';
 import { binarySearch, insertByBinarySearch } from '@utils/array.js';
 import { calcVideoRenderedSize } from '@utils/video.js';
 import { commentComparator } from 'comment/utils.js';
-import {
-    AnchorSpaceAllocator,
-    ISpaceAllocator,
-    SpaceAllocator,
-} from 'renderer/allocator.js';
+import { AnchorSpaceAllocator, SpaceAllocator } from 'renderer/allocator.js';
 import { CommentFactory, ICommentFactory } from 'renderer/factory.js';
-
-interface CCLOptions {
-    global: {
-        scale: number;
-        opacity: number;
-        className: string;
-    };
-    scroll: {
-        scale: number;
-        opacity: number;
-    };
-    // scripting: {
-    //     mode: Array<number>;
-    //     engine: IScriptingEngine;
-    // };
-}
-
-export interface ICommentManager {
-    stage: HTMLElement;
-    width: number;
-    height: number;
-    options: CCLOptions;
-    start(): void;
-    stop(): void;
-    clear(): void;
-    setBounds(w?: number, h?: number): void;
-    finish(c: IComment): void;
-}
-
-// ========================================================================== //
 
 export class CommentManager implements ICommentManager {
     readonly stage: HTMLElement;

@@ -1,6 +1,6 @@
 import { CommentData, CommentType, IComment } from '@api/comment.js';
+import { ICommentManager } from '@api/manager.js';
 import { Matrix3D } from '@utils/matrix3d.js';
-import { ICommentManager } from 'comment/manager.js';
 import { CoreComment } from 'renderer/classic/base.js';
 import { ScrollComment } from 'renderer/classic/scroll.js';
 import { CssScrollComment } from 'renderer/css/scroll.js';

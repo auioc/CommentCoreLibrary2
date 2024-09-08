@@ -1,11 +1,6 @@
 import { IComment } from '@api/comment.js';
+import { ISpaceAllocator } from '@api/renderer.js';
 import { insertByBinarySearch } from '@utils/array.js';
-
-export interface ISpaceAllocator {
-    add(c: IComment): void;
-    remove(c: IComment): void;
-    setBounds(w: number, h: number): void;
-}
 
 export class SpaceAllocator implements ISpaceAllocator {
     public width: number;

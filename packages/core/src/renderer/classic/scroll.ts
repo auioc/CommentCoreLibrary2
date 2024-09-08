@@ -1,5 +1,5 @@
 import { CommentData, IComment } from '@api/comment.js';
-import { ICommentManager } from 'comment/manager.js';
+import { ICommentManager } from '@api/manager.js';
 import { CoreComment } from 'renderer/classic/base.js';
 
 export class ScrollComment extends CoreComment {

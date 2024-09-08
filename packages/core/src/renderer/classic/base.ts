@@ -5,9 +5,9 @@ import {
     IMotion,
     MotionRecord,
 } from '@api/comment.js';
+import { ICommentManager } from '@api/manager.js';
 import { Tuple } from '@api/types.js';
 import { Matrix3D } from '@utils/matrix3d.js';
-import { ICommentManager } from 'comment/manager.js';
 
 const linearEasing = (t: number, b: number, c: number, d: number) => {
     return (t * c) / d + b;
