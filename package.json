@@ -4,6 +4,8 @@
     "scripts": {
         "preinstall": "npx -y only-allow pnpm",
         "clean:dist": "rimraf --verbose --glob -- packages/*/dist",
+        "clean:packages-node-modules": "rimraf --verbose --glob -- packages/*/node_modules shared/*/node_modules",
+        "refresh-packages": "pnpm clean:packages-node-modules && pnpm i -r",
         "build": "pnpm clean:dist && pnpm -r build",
         "build:dev": "pnpm clean:dist && pnpm -r build:dev",
         "watch": "pnpm --stream --parallel -r watch",
